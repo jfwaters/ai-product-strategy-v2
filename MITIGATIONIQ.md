@@ -39,6 +39,7 @@ MitigationIQ helps communities decide **which disaster-protection projects to fu
 - **The LLM never produces the numbers.** Risk, cost and benefit figures come from deterministic models. Portfolio selection comes from constrained optimization.
 - **Generative AI** explains results, flags gaps or inconsistent assumptions, answers scenario questions and drafts justifications for human review.
 - **Every recommendation** must be explainable and traceable to its data.
+- **Every planner override needs a reason.** When a planner changes a recommendation, the product asks why (e.g., "council rejected this" or "cost estimate is outdated") and keeps the change and reason in the audit trail. These reasons feed model inputs and rules through human review, not automated retraining.
 
 ## Positioning
 
