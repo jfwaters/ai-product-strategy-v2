@@ -64,9 +64,27 @@
 
 *Your partner played the Big Tech attacker. What was their plan to kill you?*
 
-**Attacker:**
-**Attack vector (target the weakest loop):**
-**Weeks 1-4 - what they ship:**
-**Weeks 5-8 - how they poach users:**
-**Weeks 9-12 - why users don't come back:**
+*Hypothetical attack plan for this exercise; it isn't based on any announced Microsoft product or plan.*
+
+**Attacker:** Microsoft (Head of Product, Copilot)
+**Attack vector (target the weakest loop):** Network (1/5). Microsoft sidesteps the cross-customer benchmark by turning each consulting firm's own project history in Microsoft 365 into an instant internal benchmark, so MitigationIQ's pooled data never gets started.
+**Weeks 1-4 - what they ship:** A resilience-planning agent template for Copilot that reads a firm's past estimates, bids and plans from Excel and SharePoint. It compares candidate projects, drafts council rationales and summarizes FEMA funding rules.
+**Weeks 5-8 - how they poach users:** Offer the template free to existing Copilot customers, so there's no new vendor or procurement cycle. Launch it with a few large consulting firms as reference customers, and show how to import MitigationIQ exports. Then bring it to state offices already on Microsoft.
+**Weeks 9-12 - why users don't come back:** Each firm's benchmark and templates now live in its own Microsoft environment and improve with every project. MitigationIQ has no shared benchmark for them to miss, so leaving costs them little. Once a five-year plan is finished in Copilot, the next natural switching point may be years away.
 **Your defense:**
+1. **Sell what Microsoft won't do:** a neutral benchmark across firms and communities. A single firm's Copilot sees only that firm's data.
+2. **Lead with state offices:** they see every local application in their state, so cross-community data comes naturally to them. Consulting firms come second.
+3. **Secure data-sharing rights in pilot contracts,** so the benchmark can start with the first customers, not after launch.
+4. **Double down on defensibility:** traceable numbers, kept-current funding rules, and override reasons in the audit trail. This is the part a general-purpose agent is weakest at, and it's what councils and funders scrutinize.
+5. **Work inside Excel:** offer import and export so MitigationIQ complements Microsoft 365 instead of competing with it.
+
+---
+
+## Open Implications of This Defense
+
+*The prior answers above are unchanged. If this defense is adopted, these answers may need revisiting:*
+
+- **Network fix (Flywheel Loops):** the fix starts with consulting firms and state offices equally. The defense would put state offices first, because a firm's internal benchmark is the part Microsoft could copy.
+- **Network score and data pooling:** the score stays 1/5 for launch, since the pooled benchmark still wouldn't exist yet. But securing data-sharing rights in pilot contracts is a new commitment, and customers may resist it.
+- **Platform Encroachment (Threat 1):** 18–24 months and 25% of value at risk still fit a full product threat, but this firm-level version could land sooner and reach more than the Explain step. Time-to-threat may need shortening or a note.
+- **Launch customers (`MITIGATIONIQ.md`):** the launch customers to test are listed with consulting firms first. Leading with state offices would reverse that order.
