@@ -33,9 +33,9 @@
 ### Platform Exposure — 3/5
 *Encroachment risk × pivot speed. If Apple/Google/OpenAI ships your hero feature native — then what?*
 
-**Score rationale:** A general-purpose model can't ship the hero feature tomorrow: the recommendation comes from constrained optimization over funding rules, cost shares and project interactions, not from an LLM, and buyers need traceable numbers they can defend to councils and funders. The niche is too small and too regulated for OpenAI or Google to target directly. The exposure comes from adjacent platforms: GIS and climate-risk incumbents could extend into decision support faster than a startup can build distribution. Being model-agnostic (any risk data source, any LLM for explanation) and handing off to the BCA Toolkit instead of competing with it keeps pivot speed high.
+**Score rationale:** A general-purpose model can't ship the hero feature tomorrow: the recommendation comes from constrained optimization over funding rules, cost shares and project interactions, not from an LLM, and buyers need traceable numbers they can defend to councils and funders. The niche is too small and too regulated for OpenAI or Google to target directly. The realistic platform exposure is Microsoft: general Copilot improvements in Excel and Word could give consultants a "good enough" version over 18–24 months, though it would be weaker on rule-constrained optimization and traceable numbers. Being model-agnostic (any risk data source, any LLM for explanation) and handing off to the BCA Toolkit instead of competing with it keeps pivot speed high.
 
-**Named attacker:** Esri or Jupiter Intelligence extending from risk mapping and analytics into portfolio recommendations.
+**Named attacker:** Microsoft, through Copilot in Excel, Word and Teams.
 
 ---
 
@@ -43,7 +43,7 @@
 **Your crack (weakest axis):** Data Advantage (2/5)
 
 ## Top Vulnerability
-The data flywheel doesn't exist at launch and takes years to compound, so an incumbent with the install base (Esri) could add a "good enough" portfolio module before MitigationIQ becomes the system of record for the plan cycle.
+The data flywheel doesn't exist at launch and takes years to compound, so an incumbent with the install base (Esri) could add a "good enough" portfolio module before MitigationIQ becomes the system of record for the plan cycle. Esri is the largest threat; the most urgent is Jupiter Intelligence with Arcadis, which already models adaptation options and builds investment cases.
 
 ## Confidence Level
 **M.** The problem is real and underserved: many tools map risk, few turn it into a defensible, funding-constrained decision. But the moat depends on winning the plan-cycle workflow early and on customers recording outcomes long enough for the cost-and-schedule data loop to pay off.
