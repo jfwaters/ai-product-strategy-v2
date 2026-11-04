@@ -26,7 +26,7 @@ Cost per request = typical tier pricing × estimated tokens per request:
 - **Frontier:** ~200K input / 20K output tokens over ~10 agent steps at $4–$10 / $20–$50 per 1M tokens (e.g., Claude Opus 5.5, Claude Fable 5.1, gpt-6-astra)
 
 **Assumptions:**
-- 500 AI requests per active user per month; 1% reach the frontier tier, about 5 grant drafts per user per month.
+- 500 AI requests per active user per month; 1% reach the frontier tier, about 5 grant drafts per user per month, averaged across all seats. With 25–35% of users drafting (Packaging Decision), that's ~14–20 drafts per drafting user, so treat 5 as an upper bound; the Board One-Pager shows the range from 0 to 5.
 - 250 active users, which sets the per-user share of infrastructure and funding-rule upkeep.
 - Vendor-neutral tier pricing, since no primary LLM provider has been chosen. Claude prices are Anthropic's published rates as of October 2026; other vendors' prices come from third-party comparisons and are unverified.
 - No prompt caching. Caching the shared portfolio context could noticeably reduce mid-tier cost.
@@ -55,7 +55,7 @@ Cost per request = typical tier pricing × estimated tokens per request:
 ## Pricing Model
 
 **Current pricing:** $150/user/month flat seat ($1,800/year), all features included with unlimited grant drafting. *(Assumed for this exercise; MitigationIQ is a concept with no real price.)* Comparable tools: Esri ArcGIS Pro Creator ~$700–845/year (~$60–70/month, third-party estimates); Autocase $2,500/year (~$210/month); Instrumentl $299–499/month for up to 3 users (~$100–170/user). An annual seat should also fit under many governments' small-purchase limits.
-**Proposed AI pricing:** $150/user/month base fee + $300 per grant application package. Implied revenue ~$1,650/user/month at 5 packages, so the flat seat gives away ~$1,500 of value per user per month.
+**Proposed AI pricing:** $150/user/month base fee + $300 per grant application package. Implied revenue ~$1,650/user/month at 5 packages, so the flat seat gives away ~$1,500 of value per user per month; at the 1–2 package planning range, implied revenue is $450–$750 and the flat seat gives away $300–$600.
 **Model:** Hybrid (base fee + metered work)
 
 | Field | Decision |
@@ -65,8 +65,8 @@ Cost per request = typical tier pricing × estimated tokens per request:
 | **Unit of work** | A grant application package drafted for one specific program (BRIC, FMA or HMGP), ready for human review |
 | **Base fee** | $150/user/month (core recommendation engine + AI explanation layer) |
 | **Price per unit** | $300 per application package |
-| **Estimated units per user per month** | 5 (same as the Cost Model) |
-| **Implied revenue per user** | $1,650/month ($150 + 5 × $300) |
+| **Estimated units per user per month** | 5, averaged across all seats (same as the Cost Model); planning range 1–2 |
+| **Implied revenue per user** | $1,650/month at 5 packages ($150 + 5 × $300); $450–$750 at 1–2 packages |
 
 **Why Maximize:** Skim would make government procurement harder and leave the door open for Esri. Penetrate doesn't fit because funding-rule upkeep is a large fixed cost that needs scale before low prices pay off. Maximize earns revenue in a niche where few competitors handle funding rules, without slowing adoption.
 **Why application packages are the unit:** Drafting is the costly, occasional, high-value task, consistent with the 70% rule in the Packaging Decision. A package likely saves 10–20 hours of consultant time (~$1,250–2,500 at $125/hour), so $300 is roughly 12–25% of the value delivered, against ~$1.50 of inference cost.
@@ -74,7 +74,7 @@ Cost per request = typical tier pricing × estimated tokens per request:
 
 **Pricing assumptions:**
 - The base fee stays at $150 so the comparison isolates the effect of metering grant drafts.
-- 5 drafts per user per month comes from the Cost Model; paying per package will likely reduce volume.
+- 5 drafts per user per month comes from the Cost Model and is an upper bound; paying per package will likely reduce volume, so 1–2 per seat is the planning range (see Board One-Pager).
 - Value per package (10–20 consultant hours at $125/hour) is an estimate, not a market benchmark.
 
 **To validate:**
@@ -106,14 +106,14 @@ Cost per request = typical tier pricing × estimated tokens per request:
 2. **Chat usage on its own:** if under 70%, the rule would make chat an add-on; keep it bundled anyway because its cost is low and explainability is core.
 3. **Willingness to pay per application:** whether consultants can pass the cost to clients, and whether state and local procurement rules allow per-application pricing.
 4. **Defensibility:** `kill-switch.md` lists draft justifications as not defensible, so the add-on needs to rely on funding-rule logic and the audit trail to avoid being commoditized.
-5. **Inference cost per application:** needed for the Cost Model above.
+5. **Inference cost per application:** confirm the Cost Model's ~$1.50 estimate (range $1.20–$3.00) with an end-to-end prototype draft.
 
 ## Stress Tests
 
 | Scenario | Impact on Margin | Response |
 |----------|-----------------|----------|
 | Inference costs 3x | COGS $32.58 → $65.25/user (+$32.67). Flat $150 margin: 78% → **57%**. Hybrid $1,650 margin: 98% → 96%. Core-only hybrid users: ~71%. | Send more chat to the small tier, cache the shared portfolio context, and review the per-package price. |
-| Heaviest segment doubles | Consultants go from 5 to 10 drafts/month: COGS → $40.08 (+$7.50). Flat margin: 78% → **73%**. Hybrid margin: 98% → 99%, since revenue rises with drafts. | Hybrid pricing makes heavy users more profitable; under the flat seat, other customers would subsidize them. |
+| Heaviest segment doubles | Grant drafting by consultants doubles, from an average of 5 to 10 drafts per seat per month: COGS → $40.08 (+$7.50). Flat margin: 78% → **73%**. Hybrid margin: 98% → 99%, since revenue rises with drafts. | Hybrid pricing makes heavy users more profitable; under the flat seat, other customers would subsidize them. |
 | Model provider raises prices 50% | Inference $16.33 → $24.50: COGS → $40.75 (+$8.17). Flat margin: 78% → **73%**. Hybrid margin: 98% → 98%. | Use the 48-hour response in `kill-switch.md`: run evals on the backup model, move chat and gap flags first, then rationales once they pass. |
 
 *Baseline from the Cost Model: $32.58 COGS/user/month, including $16.33 of inference. Takeaway: hybrid pricing barely moves under any shock; the flat seat loses more than 20 margin points if inference costs triple.*
@@ -121,6 +121,36 @@ Cost per request = typical tier pricing × estimated tokens per request:
 ## Board One-Pager
 <!-- Before/After: Old SaaS revenue vs. AI usage revenue for your product -->
 
-**Before (traditional SaaS):**
-**After (AI-enabled):**
+*250 seats, $150/seat, $300 per grant application package. "Before" is AI added to a flat $150 seat; "After" is the hybrid price. Usage and costs are identical in both, so only the pricing structure differs. Base case: 5 packages per seat per month, the upper end of the range below.*
+
+**Before (traditional SaaS: AI added to a flat seat):**
+- **Revenue:** $150/seat × 250 seats = **$37,500/month** ($450K/year)
+- **COGS:** **$8,145/month** ($32.58/seat, including unlimited grant drafting). The price is fixed, but the cost rises with usage.
+- **Gross margin:** **78.3%**
+
+**After (AI-enabled, hybrid):**
+- **Revenue:** $150 base × 250 seats + $300 × 1,250 packages = **$412,500/month** ($4.95M/year)
+- **COGS:** **$8,145/month, variable** (same usage, same cost)
+- **Gross margin:** **98.0%**
+
 **Net margin shift:**
+- **Δ margin:** **+19.7 points**
+- **Δ gross profit:** **+$375,000/month** (+$4.5M/year), from $29,355 to $404,355
+
+### The Additional Revenue Depends on Package Volume
+
+Every package adds $300 of revenue for ~$1.50 of inference, so **each additional package per seat per month adds $75,000/month ($900K/year) of gross profit across 250 seats.** Package volume is the assumption that matters most:
+
+| Packages per seat per month | Hybrid revenue/month | Flat seat margin | Hybrid margin | Δ margin | Δ gross profit/month | Δ gross profit/year |
+|---|---|---|---|---|---|---|
+| 0 (floor) | $37,500 | 83.3% | 83.3% | 0 points | $0 | $0 |
+| 1 | $112,500 | 82.3% | 94.1% | +11.8 points | +$75,000 | +$0.9M |
+| 2 (conservative) | $187,500 | 81.3% | 96.3% | +15.0 points | +$150,000 | +$1.8M |
+| 5 (base case) | $412,500 | 78.3% | 98.0% | +19.7 points | +$375,000 | +$4.5M |
+
+*COGS per seat = $25.08 core + $1.50 per package. Package counts are averages across all seats. With 25–35% of users drafting applications (Packaging Decision), 1–2 per seat means ~3–8 packages per drafting user per month; 5 per seat means ~14–20, which is plausible only at the peak of a funding window. Treat 1–2 as the planning range and 5 as the upside.*
+
+**Narrative:**
+- **Why margin % moves:** A flat seat takes on all of the AI's variable cost but captures none of the extra value. Heavy grant drafters cost the most to serve and pay the same as everyone else, so lighter users subsidize them, and the flat margin is fragile (78% → 57% if inference costs triple). Hybrid pricing charges for the expensive work: each package costs ~$1.50 to produce and sells for $300, so the heaviest usage becomes the most profitable.
+- **Gross $ and NRR win:** Revenue follows the work, not the headcount. Government buyers rarely add seats, but they apply for more grants when funding opens, so package revenue grows within existing accounts and can push net revenue retention above 100% without new customers. Depending on package volume, that's **+$0.9M to +$4.5M a year in gross profit** at 250 seats.
+- **Hedge:** Lead with the conservative case for a board: at 2 packages per seat, hybrid earns ~$180K/month in gross profit vs. ~$30K for the flat seat (+$150K/month). The floor is safe: if no one buys a package, hybrid equals the flat seat at an 83% margin, so the switch can't make things worse. The real risks are buying rules (agencies may need prepaid bundles) and whether consultants will pass $300 through to clients.
