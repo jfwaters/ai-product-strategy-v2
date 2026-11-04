@@ -54,9 +54,35 @@ Cost per request = typical tier pricing × estimated tokens per request:
 
 ## Pricing Model
 
-**Current pricing:**
-**Proposed AI pricing:**
-**Model:** seat-based / usage-based / outcome-based / hybrid
+**Current pricing:** $150/user/month flat seat ($1,800/year), all features included with unlimited grant drafting. *(Assumed for this exercise; MitigationIQ is a concept with no real price.)* Comparable tools: Esri ArcGIS Pro Creator ~$700–845/year (~$60–70/month, third-party estimates); Autocase $2,500/year (~$210/month); Instrumentl $299–499/month for up to 3 users (~$100–170/user). An annual seat should also fit under many governments' small-purchase limits.
+**Proposed AI pricing:** $150/user/month base fee + $300 per grant application package. Implied revenue ~$1,650/user/month at 5 packages, so the flat seat gives away ~$1,500 of value per user per month.
+**Model:** Hybrid (base fee + metered work)
+
+| Field | Decision |
+|---|---|
+| **Strategy posture** | Maximize |
+| **Pricing model** | Hybrid |
+| **Unit of work** | A grant application package drafted for one specific program (BRIC, FMA or HMGP), ready for human review |
+| **Base fee** | $150/user/month (core recommendation engine + AI explanation layer) |
+| **Price per unit** | $300 per application package |
+| **Estimated units per user per month** | 5 (same as the Cost Model) |
+| **Implied revenue per user** | $1,650/month ($150 + 5 × $300) |
+
+**Why Maximize:** Skim would make government procurement harder and leave the door open for Esri. Penetrate doesn't fit because funding-rule upkeep is a large fixed cost that needs scale before low prices pay off. Maximize earns revenue in a niche where few competitors handle funding rules, without slowing adoption.
+**Why application packages are the unit:** Drafting is the costly, occasional, high-value task, consistent with the 70% rule in the Packaging Decision. A package likely saves 10–20 hours of consultant time (~$1,250–2,500 at $125/hour), so $300 is roughly 12–25% of the value delivered, against ~$1.50 of inference cost.
+**Outcome-based pricing, considered and rejected:** A share of grant money won would match value best, but federal grant rules may restrict contingency fees, and awards can take months or years. Per-package pricing captures most of that value now.
+
+**Pricing assumptions:**
+- The base fee stays at $150 so the comparison isolates the effect of metering grant drafts.
+- 5 drafts per user per month comes from the Cost Model; paying per package will likely reduce volume.
+- Value per package (10–20 consultant hours at $125/hour) is an estimate, not a market benchmark.
+
+**To validate:**
+1. **Price per package:** what consultants charge clients to write a BRIC or FMA application, and whether they'd pass $300 through.
+2. **Procurement:** whether state and local buyers can pay per package or would need prepaid bundles (e.g., 10 packages upfront).
+3. **Draft volume with a price attached:** at 2 drafts per month, implied revenue drops to $750.
+4. **Contingency-fee rules:** check the federal cost principles (2 CFR 200) before ruling outcome-based pricing in or out for good.
+5. **Benchmark prices:** the Esri figures come from third-party sites and Instrumentl's tiers differ between sources.
 
 ### Packaging Decision
 
@@ -86,9 +112,11 @@ Cost per request = typical tier pricing × estimated tokens per request:
 
 | Scenario | Impact on Margin | Response |
 |----------|-----------------|----------|
-| Inference costs 3x | | |
-| Heaviest segment doubles | | |
-| Model provider raises prices 50% | | |
+| Inference costs 3x | COGS $32.58 → $65.25/user (+$32.67). Flat $150 margin: 78% → **57%**. Hybrid $1,650 margin: 98% → 96%. Core-only hybrid users: ~71%. | Send more chat to the small tier, cache the shared portfolio context, and review the per-package price. |
+| Heaviest segment doubles | Consultants go from 5 to 10 drafts/month: COGS → $40.08 (+$7.50). Flat margin: 78% → **73%**. Hybrid margin: 98% → 99%, since revenue rises with drafts. | Hybrid pricing makes heavy users more profitable; under the flat seat, other customers would subsidize them. |
+| Model provider raises prices 50% | Inference $16.33 → $24.50: COGS → $40.75 (+$8.17). Flat margin: 78% → **73%**. Hybrid margin: 98% → 98%. | Use the 48-hour response in `kill-switch.md`: run evals on the backup model, move chat and gap flags first, then rationales once they pass. |
+
+*Baseline from the Cost Model: $32.58 COGS/user/month, including $16.33 of inference. Takeaway: hybrid pricing barely moves under any shock; the flat seat loses more than 20 margin points if inference costs triple.*
 
 ## Board One-Pager
 <!-- Before/After: Old SaaS revenue vs. AI usage revenue for your product -->
