@@ -40,13 +40,32 @@
 
 | Metric | Target | Measurement | Alert Threshold |
 |--------|--------|-------------|-----------------|
-| Accuracy | | | |
-| Hallucination rate | | | |
-| Latency (p95) | | | |
-| Drift velocity | | | |
+| Accuracy | **100%** on rule-judged rows (budget, eligibility, benefit-cost math); **95%** on LLM-judged rows (rationale and chat quality) | Weekly, and before any model or funding-rule change. Golden dataset (10 rows now, growing to ~300 by launch). Rule judges check the optimizer exactly; an LLM judge from a different vendor than the production model scores explanations against a rubric. | Any rule-judged failure → **release blocked**. LLM-judged score <92% → **pages on-call PM**. |
+| Hallucination rate | **0%** wrong numbers in explanations; **<0.5%** invented content (made-up funding rules, programs or sources) | Number-match check on **100% of production explanations** against optimizer output, plus a weekly LLM review for invented rules or sources. | Any number mismatch → that explanation is **hidden automatically** (numbers only). Mismatches >1% in a day, or invented content >1% in a week → **roll back to the last good model**. |
+| Latency (p95) | Chat and "what if?" answers **<4 s**; optimizer rerun **<10 s**; council rationale **<20 s**; grant draft **<10 min** (background) | Continuous production monitoring (e.g., Datadog), by task. | Chat >8 s for 10 minutes → **page**. LLM provider outage → **automatic degraded mode** (recommendations still work). |
+| Drift velocity | **<0.5%/week** accuracy decline; **funding-rule changes** reflected within 5 business days | 4-week rolling accuracy trend, plus monitoring of FEMA and state funding notices for rule changes. | Decline >1%/week → **golden dataset audit**. Funding-rule change detected → **rules audit and rescore of affected portfolios**. |
+
+**Why these bands are defensible:** 100% where code can check the answer exactly, because 95% is fine for writing quality but not for "did we break a funding rule." 0% wrong numbers, because checking every production explanation costs very little. Drift includes funding rules, not just the model: BRIC was cancelled, restored and relaunched within two years.
+
+*Assumptions: the golden dataset grows from 10 rows to the 25 Port Halden scenarios in `kill-switch.md`, then to ~300 by launch. Latency targets are estimates for the planned model tiers. Datadog and the LLM judge are examples, since no vendor has been chosen.*
 
 ## HITL Architecture
 <!-- When does a human step in? What's the escalation path? -->
+
+**Triggers:** Confidence **<70%** (per Confidence UX) OR an explanation **fails the number check** OR a **safety flag** (e.g., prompt injection or a request to break a funding rule) OR **any grant draft** (always reviewed before submission) → routed to a human reviewer.
+
+| Trigger | Reviewer | Side |
+|---|---|---|
+| Cost or project-data questions | Project engineer | Customer |
+| Eligibility questions | Grants lead | Customer |
+| Grant drafts | Planner or consultant who submits it | Customer |
+| Funding-rule questions and rule changes | Funding-rule policy analyst | MitigationIQ |
+| Safety flags | On-call PM | MitigationIQ |
+| 1% quality-check sample of rationales and drafts | QA reviewer | MitigationIQ |
+
+**Feedback loop:** Reviewer corrections and planner override reasons feed the **weekly golden dataset audit**, where they become new test rows. Rule fixes go through the policy analyst's review, not automated retraining (per `MITIGATIONIQ.md`).
+
+*MitigationIQ reviewers are the staff in the Cost Model (0.25 FTE policy analyst and 1% quality sampling). Customer reviewers are part of their own workflow, not MitigationIQ's cost.*
 
 ## Red-Team Findings
 *What failure mode did your partner find that you missed?*
