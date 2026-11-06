@@ -22,13 +22,19 @@
 
 ## Confidence UX Design
 
-**Approach:** show uncertainty / tiered confidence / human-in-loop trigger
+**Approach:** Tiered confidence + human-in-loop trigger, showing uncertainty within each tier. Confidence is not the AI rating itself. It's measured from three checks: **scenario stability** (how often a project stays in the portfolio as costs and avoided losses vary within their ranges), **input verification** (whether key inputs are confirmed), and the **explanation check** (every number in the AI's explanation matches the optimizer). Each project gets a tier; portfolio readiness depends on its lowest-confidence funded project.
 
-**High confidence (>90%):**
-**Medium confidence (70-90%):**
-**Low confidence (<70%):**
+**High confidence (>90%):** The project stays in the portfolio in over 90% of scenarios, its inputs are verified, and its explanation passed the number check. It shows a solid **Recommended** badge and a rationale with source links on every number, and "Ready for council" export is enabled. Copy: *"Recommended in 94% of scenarios. All inputs verified."*
+**Medium confidence (70-90%):** The badge softens to an outlined **"Likely — depends on assumptions."** Ranges replace single figures (*"avoids $8–11M"*), the product names the deciding assumption (*"Drops out if cost exceeds $4.1M"*), and open checks are listed with an owner (*"Project engineer: confirm dated cost estimate"*). Export is allowed, but the council rationale gets an "Assumptions pending" section so officials see the uncertainty too.
+**Low confidence (<70%):** The project isn't included automatically. It's marked **Needs review** and routed to a named reviewer: an engineer for cost questions or a grants lead for eligibility. "Ready for council" export stays locked until the reviewer resolves the issue or overrides it with a reason. If an AI explanation fails the number check, it's hidden and only the numbers are shown (degraded mode) until it's regenerated and passes.
 
 **User control surface:**
+- **Users adjust threshold?** Y. Organization admins can raise the cutoffs (e.g., a state office requiring 95% before export) but can't lower the review threshold below 70%.
+- **See AI reasoning?** Y. Source-linked rationale, a chart of how often the project is selected across scenarios, and the assumptions it depends on.
+- **Correct & override?** Y. Planners can force a project in or out; every override requires a reason recorded in the audit trail.
+- **Corrections → model?** Y, through human review into model inputs and rules, not automated retraining (per `MITIGATIONIQ.md`).
+
+*Why 70%, not 50%: a recommendation that holds up only half the time is a coin flip, and in a decision that steers public funds and must stand up before a council, it should go to a person rather than be softened and exported. Cutoffs can be tuned once the golden dataset shows how well the confidence scores are calibrated. Example percentages and dollar figures are illustrative.*
 
 ## Reliability Contract
 
