@@ -20,17 +20,6 @@
 
 *Mix: 5 standard rows, 2 edge cases (20%, rows 6–7) and 3 adversarial rows. Data is the synthetic Port Halden scenario from the Lovable prototype: a $20M budget made up of a $9M federal grant, a $6M state clean-water loan and a $5M local bond.*
 
-**Assumptions:**
-- Edge cases and adversarial rows are counted separately, so adversarial rows are marked N in the edge-case column.
-- Row 6 uses a made-up 20% overlap, since the prototype's interaction data wasn't visible.
-- Project costs and benefit-cost ratios come from the prototype's synthetic data.
-
-### How We Test Our AI (sales pitch)
-> "Every number you see comes from a deterministic optimizer, not a language model, so our tests check those numbers exactly: budgets, funding caps, eligibility rules and benefit-cost math. The AI's job is to explain those numbers, and a second layer of tests checks that every explanation matches the optimizer and traces to its source. We also attack our own product: hidden instructions inside imported plans, pressure to inflate a number for a council, and requests to break funding rules. A new model doesn't ship until it passes all of it."
-
-### Prototype Finding
-In one run, the Lovable prototype funded the fire station and emergency operations center ($1.3M) from the state clean-water loan, even though the app's own rule limits that loan to water, stormwater and nature-based projects. Row 10 tests exactly this, so the prototype would likely fail its own golden dataset. *(Seen in the page text from one run; confirm on the live app before citing.)*
-
 ## Confidence UX Design
 
 **Approach:** show uncertainty / tiered confidence / human-in-loop trigger
