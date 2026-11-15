@@ -61,12 +61,22 @@ Planner override reasons and engineer corrections sit in each customer's audit t
 
 ## Shadow AI Audit
 
+> **Simulated:** MitigationIQ isn't a real product yet, so there are no support tickets, interviews or usage logs to search. The workarounds, signal sources, frequencies and spend below are **plausible user behavior simulated for this exercise**, based on how planners and consultants work today. Validate them in pilot interviews before using them for roadmap decisions.
+
+*Columns follow the course mapping: Tool = workaround, Owner = signal source, Risk Level = how often it shows up, Decision = build / partner / ignore, with the dominant gap type.*
+
 | Tool | Owner | Risk Level | Decision |
 |------|-------|-----------|----------|
-| | | H / M / L | keep / govern / kill |
-| | | H / M / L | keep / govern / kill |
-| | | H / M / L | keep / govern / kill |
+| **ChatGPT or Microsoft Copilot to draft grant narratives** from a portfolio export | Pilot interviews; support tickets mentioning "ChatGPT" | H | **Build** (capability gap). This is the grant drafting add-on; the workaround confirms demand. |
+| **ChatGPT to summarize new FEMA and state funding notices** and check what changed in eligibility | Support searches for "NOFO" and "ChatGPT"; questions after BRIC's relaunch | H | **Build** (capability gap): an in-product "what changed" digest whenever funding rules update. |
+| **Excel, with Copilot, to recheck funding splits** by exporting the portfolio and redoing the math | Product analytics (CSV exports before council meetings); CS calls | M | **Build** (trust gap → reopen M4): a "show the math" view tracing each funding assignment to its rule. |
+| **Zapier or Power Automate to push portfolios into Esri ArcGIS** for council maps | Zapier directory; integration requests to CS | M | **Partner** (workflow gap): an ArcGIS export or connector instead of building maps. |
+| **Paid grant-discovery tools (Instrumentl, Grantable) or ChatGPT** to find funding sources beyond the three in the plan | Sales calls; pilot interviews | L | **Ignore for now** (pricing gap): re-examine packaging first; funding-source discovery may belong in the base plan. |
 
-**Total tools found:**
-**Tools after triage:**
-**Estimated hidden spend:**
+**Total tools found (workarounds found):** 5
+**Tools after triage (build candidates):** 3: grant drafting, the funding-notice digest and the "show the math" view. One partner, one ignore.
+**Estimated hidden spend (adjacent spend):** ~$40/user/month, or ~$10K/month (~$120K/year) across 250 users. Simulated mix: ~40% on ChatGPT plans at ~$25, ~30% on Microsoft 365 Copilot at ~$30, ~15% on grant-discovery tools at ~$130, and ~10% on Zapier at ~$30. List prices are approximate and should be checked.
+
+**The workaround we've been dismissing:** ChatGPT summaries of funding notices. Funding-rule upkeep was treated as a back-office job for the policy analyst, but users are pasting notices into ChatGPT because they need to know *what changed for their plan*, today. It's not an edge case; it's a build candidate, and it turns the non-compounding funding-rule upkeep loop into something users see and value.
+
+*Governance link: rows 1 and 2 are Samsung-style paste paths. Planners may paste critical-infrastructure details into consumer AI tools, which is another reason to ship these natively under the Governance Policy's data rules.*
