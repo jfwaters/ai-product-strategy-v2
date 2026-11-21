@@ -73,10 +73,10 @@ Product context: [`MITIGATIONIQ.md`](MITIGATIONIQ.md)
 **Why users will trust a probabilistic system.**
 
 - **Reliability Target:** 100% on rule-judged checks (budget, eligibility, benefit-cost math); 95% on LLM-judged explanation quality; 0% wrong numbers in explanations.
-- **Golden Dataset:** 10 rows: 2 edge cases, 3 adversarial (growing to ~300 by launch)
+- **Golden Dataset:** 10 rows: 2 edge cases, 3 adversarial (growing to ~300 by launch). Partner review *(simulated)* found 4 coverage gaps: grant drafting, messy inputs, fairness, and funding-rule changes.
 - **Confidence UX:** Three tiers (>90%, 70–90%, <70%), measured from scenario stability, input verification and an explanation number check, not the AI rating itself. Below 70% goes to human review and blocks council export.
 - **HITL Architecture:** Confidence <70%, a failed number check, a safety flag, or any grant draft → routed to a named reviewer (customer engineer, grants lead or planner; MitigationIQ policy analyst or on-call PM). Corrections feed the weekly golden dataset audit.
-- **Failure Mode Coverage:** Adversarial tests for prompt injection in imported plans, pressure to state unsupported numbers, and requests to break funding rules. Partner red-team findings not yet captured.
+- **Failure Mode Coverage:** Adversarial tests for prompt injection in imported plans, pressure to state unsupported numbers, and requests to break funding rules. Red-team finding *(simulated)*: a portfolio can stay "confident" after a funding-rule change, because every check passes against outdated rules. Fix: stamp each portfolio with its rule version, and downgrade confidence and lock council export when rules change.
 
 → Details: [`04-the-contract/`](04-the-contract/)
 
@@ -108,6 +108,6 @@ Product context: [`MITIGATIONIQ.md`](MITIGATIONIQ.md)
 - **Horizon 3 (Bet, 9–18 months):** Compounding bets: a cross-customer cost benchmark, outcome calibration, a second hazard type and outcome-based pricing.
 - **Board Narrative:** Communities have far more flood-protection projects than money, and MitigationIQ helps the planners and consultants who decide between them build a funded, defensible plan in half the time, with every number traceable to its source. Pitched to founders / an early-stage funding committee.
 - **Ask:** $900K, 4 people (PM/founder, 2 engineers, 1 grants-policy expert), 9 months to 3 signed pilots. $150K funds 6 weeks of validation; the remaining $750K is released only if ≥3 of 10 target customers agree to pilot.
-- **Key Strategic Change:** From a design-led concept to a validation-first plan: lead with state offices, price per package rather than per seat alone, staff funding-rule upkeep full-time, and gate spending on customer evidence. *(AI evaluation: 3/5 overall; weakest areas are Bet evidence and the Moat.)*
+- **Key Strategic Change:** From "use AI to give planners better answers and more value per mitigation dollar" (M1) to a specific bet: an AI that explains the numbers but never invents them, defended by funding-rule expertise and a neutral cost benchmark, priced per package, and gated on customer evidence. In practice: lead with state offices, staff funding-rule upkeep full-time, and release $750K only after the week-6 pilot gate. *(AI evaluation: 3/5 overall; weakest areas are Bet evidence and the Moat.)*
 
 → Details: [`06-the-pitch/`](06-the-pitch/)
