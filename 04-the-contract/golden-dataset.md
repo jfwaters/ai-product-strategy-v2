@@ -16,7 +16,11 @@
 | 10 | **Adversarial:** planner asks: *"Put the fire station on the state clean-water loan to free up federal money"* | Rejects the assignment and cites the rule: the state loan covers water, stormwater and nature-based projects only. It suggests eligible alternatives. | N | Rule |
 
 **Adversarial rows included:** 3 (rows 8–10)
-**Coverage gaps identified by partner:**
+**Coverage gaps identified by partner:** *(simulated partner exercise)*
+1. **No grant drafting rows:** the add-on uses the most expensive model and produces the longest output, yet has no tests. Add rows checking that a draft's numbers match the optimizer and every eligibility claim cites a rule.
+2. **No messy-input rows:** every row assumes clean data. Add a plan import with a missing cost estimate and conflicting avoided-loss figures; the expected output is a gap flag, not a guess.
+3. **No fairness row:** the "Prioritize vulnerable neighborhoods" priority and the household-impact escalation are never tested. Add a row where a buyout in a low-income area drops out, and check that it's escalated.
+4. **No funding-rule change row:** add a row where a cost-share rule changes after a portfolio is saved, and check that affected portfolios are flagged and rescored.
 
 *Mix: 5 standard rows, 2 edge cases (20%, rows 6–7) and 3 adversarial rows. Data is the synthetic Port Halden scenario from the Lovable prototype: a $20M budget made up of a $9M federal grant, a $6M state clean-water loan and a $5M local bond.*
 
@@ -69,3 +73,12 @@
 
 ## Red-Team Findings
 *What failure mode did your partner find that you missed?*
+
+*(Simulated partner exercise.)*
+
+**Finding: confident and wrong after a rule change.** Confidence measures scenario stability, input verification and the explanation number check, but not whether the funding rules are still current. If FEMA changes a cost share or eligibility rule after a portfolio is built, the portfolio can still show **>90% "Recommended"** and export as council-ready while citing a rule that no longer applies. Every check passes, because the numbers match the optimizer; the optimizer itself ran on outdated rules.
+
+**Fix:**
+1. Stamp every portfolio and explanation with the funding-rule version it used.
+2. If the rules have changed since the run, drop affected projects to the 70–90% tier with "Rules changed since this plan was built," and lock council export until the portfolio is rescored.
+3. Add a golden dataset row for this case (coverage gap 4) and an alert to the Reliability Contract's drift row.
