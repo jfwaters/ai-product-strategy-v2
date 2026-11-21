@@ -73,8 +73,10 @@ Communities have far more flood-protection projects than money, and MitigationIQ
 *Your 3-sentence AI strategy from Module 1 vs. what you'd say now:*
 
 **M1 baseline:**
+"We should use AI to make MitigationIQ easier and faster to use, so planners get better answers with less work. AI can also help communities get more value from every mitigation dollar by pointing them to the projects that matter most. Over time, we'll keep adding AI wherever it improves the customer experience and the impact of the investments our customers make."
 
 **Now:**
+"We're betting that mitigation planners will build funded, defensible project plans in half the time with an AI that explains the numbers but never invents them, because the 2026 reset of federal mitigation funding is forcing every community to rebuild its plan against new rules. Our moat is funding-rule expertise and a neutral cost benchmark across communities, priced as a $150 seat plus $300 per grant package (94–96% gross margin at planning volumes), with a reliability contract of 100% rule-checked accuracy, zero wrong numbers and human review below 70% confidence. Governance keeps every adoption, export and submission in human hands, and we'll spend $150K over 6 weeks to prove someone will pilot it before spending more. It's all live in the repo."
 
 ## AI Evaluation
 *Generated with the course's AI strategy evaluation prompt, run against the M1–M5 summary in `README.md`.*
