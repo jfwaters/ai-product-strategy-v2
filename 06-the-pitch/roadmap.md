@@ -61,3 +61,116 @@
 **M1 baseline:**
 
 **Now:**
+
+## AI Evaluation
+*Generated with the course's AI strategy evaluation prompt, run against the M1–M5 summary in `README.md`.*
+
+**Bet Validation**, Score: 2/5
+- **Strengths:**
+  - The kill criteria are concrete and measurable. "Fewer than 3 of 10 agree to pilot" is a real line to walk away at.
+  - The problem framing is sharp: many tools map risk, but few turn it into a defensible decision about money.
+  - The prototype makes the idea tangible.
+- **Gaps:**
+  - The bet rests on conviction, not evidence. There are no interviews, no usage data and no buyer signals; every number is synthetic or estimated.
+  - The core hypothesis is never stated in falsifiable form. Something like: *planners will adopt an optimizer's recommendation as the starting point for their funding plan, and accept most of it.*
+  - "Why now" leans on federal funding turmoil, which is a double-edged argument: an unstable BRIC also means unstable budgets for the very buyers you're selling to.
+- **Recommendation:** Validate within 4–6 weeks, not months. Run 10 discovery calls, and put the Port Halden prototype in front of 5 planners. Ask each one whether they would take the recommended portfolio to council. Record whether they would accept, change or reject it.
+
+**Capability Assessment**, Score: 2/5
+- **Strengths:**
+  - Keeping the LLM away from the numbers keeps AI risk low.
+  - The model tiers, kill switch and degraded mode are sensible.
+- **Gaps:**
+  - The hard capabilities aren't AI at all. They are:
+    - a constrained optimizer that handles interactions between projects
+    - a funding-rules engine covering federal programs and 50 different state programs
+    - turning messy PDF hazard mitigation plans into structured data
+  - The cost model budgets a quarter of one person for funding-rule upkeep. That's likely far too little once the product covers several states.
+  - Several dependencies could block progress:
+    - **Hosting certification:** StateRAMP or FedRAMP can take months.
+    - **FEMA program stability:** the programs keep changing.
+    - **Data quality:** the risk data and each community's plan may not be good enough.
+  - No team or domain experts are named for operations research or grants policy.
+- **Recommendation:** Build the rules engine for BRIC, FMA and one state before anything else, and track the hours it takes. That number determines whether funding-rule upkeep is affordable, which is one of your kill criteria.
+
+**Impact Analysis**, Score: 3/5
+- **Strengths:**
+  - There are clear metrics: time saved, package revenue and NRR (net revenue retention) through funding windows.
+  - The upside from hybrid pricing is quantified, along with a range.
+- **Gaps:**
+  - **Revenue and value come from different places.** Most revenue comes from grant drafting, the add-on that `kill-switch.md` calls not defensible. The core product's value, better decisions about public money, is mostly monetized through the $150 seat.
+  - **The market size is never stated.** 250 seats at $150 is about $450,000 a year in base fees. How many mitigation consultants and state staff exist in total?
+  - **Impact may plateau.** Plan cycles run 5 years, so usage could be bursty rather than compounding.
+  - **Opportunity cost isn't addressed.** For example, a narrower tool for state offices only could be an alternative.
+- **Recommendation:** Size the market from the bottom up: how many state offices, how many consulting firms, and how many planners in each. Then check whether the core product can stand on its own without grant drafting.
+
+**Defensibility Check**, Score: 2/5
+- **Strengths:**
+  - The analysis is honest: the flywheel scores itself 8/20.
+  - Funding-rule logic and traceable numbers are real barriers to a general-purpose model.
+  - A neutral benchmark across customers is something Microsoft structurally can't offer.
+- **Gaps:**
+  - **Every compounding loop is missing.** At launch, the moat is just a lead in effort.
+  - **Microsoft is a 12-month threat.** Copilot plus each firm's own spreadsheets is a "good enough" threat within 12 months, and Esri owns the buyer relationship.
+  - **The cost-data moat may not be proprietary.** Public agencies' cost data may be subject to public-records requests, so a competitor could request it too.
+  - **Switching costs depend on becoming the system of record,** which hasn't been proven.
+- **Recommendation:** Find out now whether cost outcomes are public records in your first two target states. If they are, rebuild the moat around making messy data usable and around funding-rule expertise, not around exclusive access to data.
+
+**Pricing Alignment**, Score: 3/5
+- **Strengths:**
+  - Charging per package matches the costly, occasional work.
+  - The structure holds up when a power user does 10× the average volume or inference costs triple. Margin stays above 95% in each case.
+  - The Maximize posture is well reasoned.
+- **Gaps:**
+  - There's no willingness-to-pay signal at all. The $150 seat is made up for the exercise, and $300 per package is based on an estimate of hours saved.
+  - Per-seat pricing doesn't fit government buyers well. State offices have few seats and buy per program or per plan.
+  - The 98% margin headline comes from the 5-package case, which is itself flagged as an upper bound.
+- **Recommendation:** Test two structures with pilot buyers: one priced per community plan per year and one per seat plus packages. Lead every pitch with the 1–2 package case.
+
+**Trust & Reliability**, Score: 4/5
+- **Strengths:**
+  - This is the strongest part of the strategy:
+    - Rule-checked targets are 100%, and every production explanation gets a number check.
+    - Confidence is measured, not self-reported by the AI.
+    - Users can see when the AI is uncertain.
+    - Each kind of review has a named reviewer.
+  - The adversarial tests go after the right risks for this domain.
+- **Gaps:**
+  - The golden dataset has only 10 rows.
+  - There's no promise on uptime or availability.
+  - Partner red-team findings are missing.
+  - The prototype appears to break its own funding rule, the fire station funded from the clean-water loan, so the design is ahead of what's been built.
+- **Recommendation:** Grow the dataset to 25 rows now and run it against the prototype. Publishing the pass rate, failures included, makes a stronger sales story than the targets alone.
+
+**Governance & Scale**, Score: 3/5
+- **Strengths:**
+  - The governance policy is specific. Owners are named and the review cadence has four layers.
+  - Agents are tightly limited, and the escalation triggers cover the Air Canada- and Samsung-style risks.
+  - The broken feedback loop was found, and there's a concrete plan to fix it.
+- **Gaps:**
+  - **Growing to new states is what breaks.** Funding-rule upkeep and the review queue grow with each new state, not each new user.
+  - **The shadow AI audit is simulated,** so its signals aren't real yet.
+  - **Feeding corrections back** depends on contract clauses public agencies may not accept.
+  - **There's no process for changing models** beyond running evals before release.
+- **Recommendation:** Model the cost of adding each new state, in rules, reviewers and evals. Make "states supported" the unit you plan scale around, not seats.
+
+**Gap Identification**, Score: 2/5
+- **Weakest components:** the Bet, because it has no evidence behind it, and the Moat, because every loop is missing.
+- **Untested assumptions:**
+  - willingness to pay
+  - packages per seat
+  - planner acceptance of recommendations
+  - the cost of funding-rule upkeep
+  - whether public agencies will share data
+  - procurement speed
+- **The board question you can't answer:** *"Who has said yes, and what did they say they'd pay?"* A sharper version: *"If cost outcomes are public records, what exactly is proprietary?"*
+- **Biggest 6-month risk:** government sales cycles. If a pilot takes 6–12 months to procure, you can't test your kill criteria in time, and you'll run low on money while you wait.
+
+---
+
+- **Overall Score:** **3/5.** Well designed, but unvalidated. The Contract and Guardrails are well ahead of the evidence for the Bet and the Moat.
+- **Biggest Risk:** No real customer commitment or willingness-to-pay data, combined with slow government buying cycles. The strategy could be internally consistent and still have no buyer.
+- **Top 3 Actions:**
+  1. **Validate in 6 weeks:** 10 discovery calls and 5 prototype walkthroughs, testing three things: whether planners accept the recommendations, what buyers would pay (seat, plan or package), and whether they'd share data.
+  2. **Prove the hard part:** build the funding-rules engine for BRIC, FMA and one state, measure the upkeep hours, and fix the prototype's eligibility error by running the 25-row golden dataset against it.
+  3. **Find a faster way to buy, and size the market:** look for a path around slow procurement, such as consultant-led pilots or cooperative purchasing contracts. Then size the market from the bottom up, so the board pitch rests on real market numbers rather than the 5-package case.
