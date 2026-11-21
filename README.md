@@ -17,7 +17,7 @@ Product context: [`MITIGATIONIQ.md`](MITIGATIONIQ.md)
 | **The Margin** | M3 | [x] | `03-the-margin/` |
 | **The Contract** | M4 | [x] | `04-the-contract/` |
 | **The Guardrails** | M5 | [x] | `05-the-guardrails/` |
-| **The Pitch** | M6 | [ ] | `06-the-pitch/` |
+| **The Pitch** | M6 | [x] | `06-the-pitch/` |
 
 ---
 
@@ -103,11 +103,11 @@ Product context: [`MITIGATIONIQ.md`](MITIGATIONIQ.md)
 
 **How you get this funded, shipped, and adopted.**
 
-- **Horizon 1 (Now):**
-- **Horizon 2 (Next):**
-- **Horizon 3 (Bet):**
-- **Board Narrative:**
-- **Ask:**
-- **Key Strategic Change:**
+- **Horizon 1 (Now, 0–3 months):** Validate and harden the prototype: pilot interviews (≥3 of 10 agree to pilot), golden dataset fixes, required override reasons, kill-switch basics, data-sharing clauses and a pricing test.
+- **Horizon 2 (Next, 3–9 months):** Build the real product: production optimizer and funding-rules engine, confidence tiers and "show the math," the grant drafting add-on, model routing, a funding-rule change digest, an ArcGIS export, and governance operations.
+- **Horizon 3 (Bet, 9–18 months):** Compounding bets: a cross-customer cost benchmark, outcome calibration, a second hazard type and outcome-based pricing.
+- **Board Narrative:** Communities have far more flood-protection projects than money, and MitigationIQ helps the planners and consultants who decide between them build a funded, defensible plan in half the time, with every number traceable to its source. Pitched to founders / an early-stage funding committee.
+- **Ask:** $900K, 4 people (PM/founder, 2 engineers, 1 grants-policy expert), 9 months to 3 signed pilots. $150K funds 6 weeks of validation; the remaining $750K is released only if ≥3 of 10 target customers agree to pilot.
+- **Key Strategic Change:** From a design-led concept to a validation-first plan: lead with state offices, price per package rather than per seat alone, staff funding-rule upkeep full-time, and gate spending on customer evidence. *(AI evaluation: 3/5 overall; weakest areas are Bet evidence and the Moat.)*
 
 → Details: [`06-the-pitch/`](06-the-pitch/)
