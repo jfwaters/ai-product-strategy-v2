@@ -42,18 +42,32 @@
 ## Board Pitch
 
 **Thesis (1 sentence):**
+Communities have far more flood-protection projects than money, and MitigationIQ helps the planners and consultants who decide between them build a funded, defensible plan in half the time, with every number traceable to its source.
 
 **The case:**
-1. Why now:
-2. What's defensible:
-3. The economics:
+1. Why now: Federal pre-disaster mitigation funding was cancelled in 2025, restored by a court and relaunched in 2026 with new priorities. Every community's funding plan is being rebuilt against new rules, while the tools in use still stop at mapping risk or checking one project's benefit-cost ratio. Nothing turns risk, costs and funding rules into a portfolio a council will approve. The same turmoil cuts both ways: unstable federal funding means unstable buyer budgets, which is why the ask is staged.
+2. What's defensible: Not much yet, and we know it. Our own flywheel score is 8/20, and every compounding loop is still missing. What we have today is a head start in effort: funding-rule logic and numbers that come from a rules-based optimizer, not a language model, which general-purpose AI can't match. The moat we're building is a neutral cost benchmark across firms and communities, led by state offices, with data-sharing rights written into every pilot contract. Microsoft and Esri each see only their own customers' data. One open question: if cost outcomes turn out to be public records, the moat has to be making messy data usable, not owning the data. We check that in the first 6 weeks.
+3. The economics: AI costs about $0.033 per request, or about $32.60 per user per month. At a planning case of 1–2 grant packages per seat a month, hybrid pricing ($150 base + $300 per package) runs a 94–96% gross margin. A flat $150 seat with the same AI runs 78% and drops to 57% if inference costs triple; hybrid pricing stays above 95%. These are modeled numbers: no buyer has seen a price yet, and the 5-package upside case isn't what we're pitching.
 
 **The risks:**
-1. Trust / failure modes:
-2. Scale / governance:
-3. Competitive:
+1. Trust / failure modes: The front-page story is a council that applies for federal money based on our recommendation, only for FEMA to reject the project as ineligible, or a buyout in a low-income neighborhood that gets deprioritized without anyone noticing. Our safeguards:
+   - Every number comes from the optimizer, and 100% of AI explanations are checked against it.
+   - Eligibility statements must cite a funding rule, or they're blocked.
+   - Anything below 70% confidence, or any change that affects households, goes to a named human reviewer before export.
+   - The weakness: our prototype currently breaks one of its own funding rules. That's the first fix, measured by a test set growing from 10 to 25 cases.
+2. Scale / governance: Costs and model quality aren't what break at 10x. What breaks is funding-rule upkeep and the human review queue, which grow with every new state, not every new user. Today's cost model budgets a quarter of one person for rule upkeep, and that's too little. The ask funds a full-time grants-policy expert, and we'll plan growth around "states supported" rather than seats. Feeding customer corrections back into the product depends on contract clauses public agencies may refuse; we'll know from the first pilots.
+3. Competitive: The scenario that forces a kill is Esri bundling a "good enough" portfolio and funding module into ArcGIS, sold to the state offices that already use it, before we have 3 signed pilots. If that happens, we stop competing on the core product and become the funding-rules layer that plugs into ArcGIS. The closest competitor, Jupiter Intelligence with Arcadis, already models adaptation returns but has shown no funding-rules logic. That's the gap we have to close first.
 
 **The ask:**
+**$900K, 4 people (PM/founder, 2 engineers, 1 grants-policy expert), 9 months to 3 signed pilots**, released in two stages:
+- **$150K now:** 6 weeks of validation and a first funding-rules engine for BRIC, FMA and one state.
+  - **Validation:** 10 discovery calls, 5 prototype walkthroughs and pricing tests.
+  - **The gate:** at least 3 of 10 target customers agree to pilot. If not, we stop and the remaining $750K is never spent.
+- **$750K once the gate is met:** the production optimizer and rules engine, the confidence and "show the math" views, the grant drafting add-on, and pilots with at least one state office and one consulting firm.
+
+**What we get:** an answer to whether planners accept the recommendations, a real willingness-to-pay figure, the measured cost of rule upkeep per state, and 3 signed pilots with data-sharing terms.
+
+**What gets paused:** the cross-customer benchmark beyond pilot customers, a second hazard type, and outcome-based pricing. None of them starts until the core is validated.
 
 ## M1 Baseline vs. Now
 *Your 3-sentence AI strategy from Module 1 vs. what you'd say now:*
